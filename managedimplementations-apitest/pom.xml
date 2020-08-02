@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>managedimplementations</artifactId>
+        <groupId>com.zkejid.constructor</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>managedimplementations-apitest</artifactId>
+
+    <name>Managed implementations API tests</name>
+    <description>Tests on the API of Managed implementations.</description>
+    <url>https://github.com/zkejidsconstructor/managed-implementations/tree/master/managedimplementations-api</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.zkejid.constructor</groupId>
+            <artifactId>managedimplementations-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Ivan Panfilov</name>
+            <email>developer@zkejid.com</email>
+            <organization>Zkejid</organization>
+            <organizationUrl>https://github.com/zkejid</organizationUrl>
+        </developer>
+    </developers>
+</project>
