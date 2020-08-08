@@ -24,6 +24,10 @@
             <groupId>com.zkejid.constructor</groupId>
             <artifactId>core-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zkejid.constructor</groupId>
+            <artifactId>managedimplementations-apitest</artifactId>
+        </dependency>
     </dependencies>
 
     <licenses>

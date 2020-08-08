@@ -2,26 +2,31 @@ package com.zkejid.constructor.managedimplementations.impl;
 
 import com.zkejid.constructor.core.api.v1.ConstructionException;
 import com.zkejid.constructor.core.api.v1.ConstructorPart;
-import com.zkejid.constructor.managedimplementations.api.v1.Api;
+import com.zkejid.constructor.managedimplementations.api.v1.ImplementationFactory;
+import com.zkejid.constructor.managedimplementations.api.v1.ImplementationProducer;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 public class ConstructorPartImpl implements ConstructorPart {
 
+  private List<ImplementationProducer<?>> producers;
+
   @Override
   public Set<Class<?>> getInterfacesNecessary() {
-    return Collections.emptySet();
+    return Collections.singleton(ImplementationProducer.class);
   }
 
   @Override
   public Set<Class<?>> getInterfacesProvided() {
-    return Set.of(Api.class);
+    return Set.of(ImplementationFactory.class);
   }
 
   @Override
   public Object getImplementation(Class<?> anInterface) throws ConstructionException {
-    if (Api.class.equals(anInterface)) {
-      return new ApiImpl();
+    if (ImplementationFactory.class.equals(anInterface)) {
+      return new ImplementationFactoryImpl(producers);
     } else {
       throw new ConstructionException("Module does not provide implementation of " + anInterface);
     }
@@ -29,11 +34,18 @@ public class ConstructorPartImpl implements ConstructorPart {
 
   @Override
   public void putImplementation(Class<?> interfaceNecessary, Object... implementation) {
-    // No-op
+    if (ImplementationProducer.class.equals(interfaceNecessary)) {
+      producers = new ArrayList<>(implementation.length);
+      for (Object o : implementation) {
+        producers.add((ImplementationProducer<?>) o);
+      }
+    }
   }
 
   @Override
   public void verifyNecessaryInterfaces() throws ConstructionException {
-    // No-op
+    if (producers == null) {
+      throw new ConstructionException("No producers specified");
+    }
   }
 }
